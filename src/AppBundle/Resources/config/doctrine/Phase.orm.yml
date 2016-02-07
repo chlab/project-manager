@@ -1,0 +1,84 @@
+AppBundle\Entity\Phase:
+    type: entity
+    table: Phase
+    indexes:
+        fkPhaseProjectId_idx:
+            columns:
+                - projectId
+        fkPhasePreviousPhaseId_idx:
+            columns:
+                - previousPhaseId
+    uniqueConstraints:
+        id_UNIQUE:
+            columns:
+                - id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        created:
+            type: datetime
+            nullable: true
+        modified:
+            type: datetime
+            nullable: true
+        deleted:
+            type: datetime
+            nullable: true
+        startdate:
+            type: date
+            nullable: true
+            column: startDate
+        enddate:
+            type: date
+            nullable: true
+            column: endDate
+        actualstartdate:
+            type: date
+            nullable: true
+            column: actualStartDate
+        actualenddate:
+            type: date
+            nullable: true
+            column: actualEndDate
+        clearancedate:
+            type: date
+            nullable: true
+            column: clearanceDate
+        state:
+            type: boolean
+            nullable: true
+    manyToOne:
+        projectid:
+            targetEntity: Project
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                projectId:
+                    referencedColumnName: id
+            orphanRemoval: false
+        previousphaseid:
+            targetEntity: Phase
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                previousPhaseId:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

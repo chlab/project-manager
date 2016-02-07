@@ -1,0 +1,58 @@
+AppBundle\Entity\Humanresource:
+    type: entity
+    table: HumanResource
+    indexes:
+        fkHumanResourceActivityId_idx:
+            columns:
+                - activityId
+        fkHumanResourceRoleId_idx:
+            columns:
+                - roleId
+        fkHumanResourceEmployeeId_idx:
+            columns:
+                - employeeId
+    uniqueConstraints:
+        id_UNIQUE:
+            columns:
+                - id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        activityid:
+            targetEntity: Activity
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                activityId:
+                    referencedColumnName: id
+            orphanRemoval: false
+        roleid:
+            targetEntity: Role
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                roleId:
+                    referencedColumnName: id
+            orphanRemoval: false
+        employeeid:
+            targetEntity: Employee
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                employeeId:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

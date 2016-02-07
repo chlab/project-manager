@@ -1,0 +1,91 @@
+AppBundle\Entity\Project:
+    type: entity
+    table: Project
+    indexes:
+        fkProjectManagerEmployee_idx:
+            columns:
+                - projectManager
+        fkProjectCopiedFrom_idx:
+            columns:
+                - copiedFrom
+    uniqueConstraints:
+        id_UNIQUE:
+            columns:
+                - id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        istemplate:
+            type: boolean
+            nullable: true
+            column: isTemplate
+        title:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        created:
+            type: datetime
+            nullable: true
+        modified:
+            type: datetime
+            nullable: true
+        deleted:
+            type: datetime
+            nullable: true
+        permissiondate:
+            type: date
+            nullable: true
+            column: permissionDate
+        priority:
+            type: boolean
+            nullable: true
+        state:
+            type: boolean
+            nullable: true
+        startdate:
+            type: date
+            nullable: true
+            column: startDate
+        enddate:
+            type: date
+            nullable: true
+            column: endDate
+        actualstartdate:
+            type: date
+            nullable: true
+            column: actualStartDate
+        actualenddate:
+            type: date
+            nullable: true
+            column: actualEndDate
+    manyToOne:
+        projectmanager:
+            targetEntity: Employee
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                projectManager:
+                    referencedColumnName: id
+            orphanRemoval: false
+        copiedfrom:
+            targetEntity: Project
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                copiedFrom:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
