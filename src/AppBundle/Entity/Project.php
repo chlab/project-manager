@@ -27,7 +27,7 @@ class Project
      *
      * @ORM\Column(name="isTemplate", type="boolean", nullable=true)
      */
-    private $istemplate;
+    private $isTemplate;
 
     /**
      * @var string
@@ -63,7 +63,7 @@ class Project
      *
      * @ORM\Column(name="permissionDate", type="date", nullable=true)
      */
-    private $permissiondate;
+    private $permissionDate;
 
     /**
      * @var boolean
@@ -84,28 +84,28 @@ class Project
      *
      * @ORM\Column(name="startDate", type="date", nullable=true)
      */
-    private $startdate;
+    private $startDate;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="endDate", type="date", nullable=true)
      */
-    private $enddate;
+    private $endDate;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="actualStartDate", type="date", nullable=true)
      */
-    private $actualstartdate;
+    private $actualStartDate;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="actualEndDate", type="date", nullable=true)
      */
-    private $actualenddate;
+    private $actualEndDate;
 
     /**
      * @var \AppBundle\Entity\Employee
@@ -116,7 +116,7 @@ class Project
      *   @ORM\JoinColumn(name="projectManager", referencedColumnName="id")
      * })
      */
-    private $projectmanager;
+    private $projectManager;
 
     /**
      * @var \AppBundle\Entity\Project
@@ -126,7 +126,7 @@ class Project
      *   @ORM\JoinColumn(name="copiedFrom", referencedColumnName="id")
      * })
      */
-    private $copiedfrom;
+    private $copiedFrom;
 
 
 
@@ -141,27 +141,27 @@ class Project
     }
 
     /**
-     * Set istemplate
+     * Set isTemplate
      *
-     * @param boolean $istemplate
+     * @param boolean $isTemplate
      *
      * @return Project
      */
-    public function setIstemplate($istemplate)
+    public function setIsTemplate($isTemplate)
     {
-        $this->istemplate = $istemplate;
+        $this->isTemplate = $isTemplate;
 
         return $this;
     }
 
     /**
-     * Get istemplate
+     * Get isTemplate
      *
      * @return boolean
      */
-    public function getIstemplate()
+    public function getIsTemplate()
     {
-        return $this->istemplate;
+        return $this->isTemplate;
     }
 
     /**
@@ -261,27 +261,27 @@ class Project
     }
 
     /**
-     * Set permissiondate
+     * Set permissionDate
      *
-     * @param \DateTime $permissiondate
+     * @param \DateTime $permissionDate
      *
      * @return Project
      */
-    public function setPermissiondate($permissiondate)
+    public function setPermissiondate($permissionDate)
     {
-        $this->permissiondate = $permissiondate;
+        $this->permissionDate = $permissionDate;
 
         return $this;
     }
 
     /**
-     * Get permissiondate
+     * Get permissionDate
      *
      * @return \DateTime
      */
     public function getPermissiondate()
     {
-        return $this->permissiondate;
+        return $this->permissionDate;
     }
 
     /**
@@ -333,146 +333,146 @@ class Project
     }
 
     /**
-     * Set startdate
+     * Set startDate
      *
-     * @param \DateTime $startdate
+     * @param \DateTime $startDate
      *
      * @return Project
      */
-    public function setStartdate($startdate)
+    public function setStartDate($startDate)
     {
-        $this->startdate = $startdate;
+        $this->startDate = $startDate;
 
         return $this;
     }
 
     /**
-     * Get startdate
+     * Get startDate
      *
      * @return \DateTime
      */
-    public function getStartdate()
+    public function getStartDate()
     {
-        return $this->startdate;
+        return $this->startDate;
     }
 
     /**
-     * Set enddate
+     * Set endDate
      *
-     * @param \DateTime $enddate
+     * @param \DateTime $endDate
      *
      * @return Project
      */
-    public function setEnddate($enddate)
+    public function setEnddate($endDate)
     {
-        $this->enddate = $enddate;
+        $this->endDate = $endDate;
 
         return $this;
     }
 
     /**
-     * Get enddate
+     * Get endDate
      *
      * @return \DateTime
      */
     public function getEnddate()
     {
-        return $this->enddate;
+        return $this->endDate;
     }
 
     /**
-     * Set actualstartdate
+     * Set actualStartDate
      *
-     * @param \DateTime $actualstartdate
+     * @param \DateTime $actualStartDate
      *
      * @return Project
      */
-    public function setActualstartdate($actualstartdate)
+    public function setActualStartdate($actualStartDate)
     {
-        $this->actualstartdate = $actualstartdate;
+        $this->actualStartDate = $actualStartDate;
 
         return $this;
     }
 
     /**
-     * Get actualstartdate
+     * Get actualStartDate
      *
      * @return \DateTime
      */
-    public function getActualstartdate()
+    public function getActualStartdate()
     {
-        return $this->actualstartdate;
+        return $this->actualStartDate;
     }
 
     /**
-     * Set actualenddate
+     * Set actualEndDate
      *
-     * @param \DateTime $actualenddate
+     * @param \DateTime $actualEndDate
      *
      * @return Project
      */
-    public function setActualenddate($actualenddate)
+    public function setActualEndDate($actualEndDate)
     {
-        $this->actualenddate = $actualenddate;
+        $this->actualEndDate = $actualEndDate;
 
         return $this;
     }
 
     /**
-     * Get actualenddate
+     * Get actualEndDate
      *
      * @return \DateTime
      */
-    public function getActualenddate()
+    public function getActualEnddate()
     {
-        return $this->actualenddate;
+        return $this->actualEndDate;
     }
 
     /**
-     * Set projectmanager
+     * Set projectManager
      *
-     * @param \AppBundle\Entity\Employee $projectmanager
+     * @param \AppBundle\Entity\Employee $projectManager
      *
      * @return Project
      */
-    public function setProjectmanager(\AppBundle\Entity\Employee $projectmanager = null)
+    public function setProjectManager(\AppBundle\Entity\Employee $projectManager = null)
     {
-        $this->projectmanager = $projectmanager;
+        $this->projectManager = $projectManager;
 
         return $this;
     }
 
     /**
-     * Get projectmanager
+     * Get projectManager
      *
      * @return \AppBundle\Entity\Employee
      */
-    public function getProjectmanager()
+    public function getProjectManager()
     {
-        return $this->projectmanager;
+        return $this->projectManager;
     }
 
     /**
-     * Set copiedfrom
+     * Set copiedFrom
      *
-     * @param \AppBundle\Entity\Project $copiedfrom
+     * @param \AppBundle\Entity\Project $copiedFrom
      *
      * @return Project
      */
-    public function setCopiedfrom(\AppBundle\Entity\Project $copiedfrom = null)
+    public function setCopiedFrom(\AppBundle\Entity\Project $copiedFrom = null)
     {
-        $this->copiedfrom = $copiedfrom;
+        $this->copiedFrom = $copiedFrom;
 
         return $this;
     }
 
     /**
-     * Get copiedfrom
+     * Get copiedFrom
      *
      * @return \AppBundle\Entity\Project
      */
-    public function getCopiedfrom()
+    public function getCopiedFrom()
     {
-        return $this->copiedfrom;
+        return $this->copiedFrom;
     }
 }

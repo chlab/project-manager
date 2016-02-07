@@ -22,7 +22,7 @@ AppBundle\Entity\Project:
             generator:
                 strategy: IDENTITY
     fields:
-        istemplate:
+        isTemplate:
             type: boolean
             nullable: true
             column: isTemplate
@@ -41,7 +41,7 @@ AppBundle\Entity\Project:
         deleted:
             type: datetime
             nullable: true
-        permissiondate:
+        permissionDate:
             type: date
             nullable: true
             column: permissionDate
@@ -51,24 +51,24 @@ AppBundle\Entity\Project:
         state:
             type: boolean
             nullable: true
-        startdate:
+        startDate:
             type: date
             nullable: true
             column: startDate
-        enddate:
+        endDate:
             type: date
             nullable: true
             column: endDate
-        actualstartdate:
+        actualStartDate:
             type: date
             nullable: true
             column: actualStartDate
-        actualenddate:
+        actualEndDate:
             type: date
             nullable: true
             column: actualEndDate
     manyToOne:
-        projectmanager:
+        projectManager:
             targetEntity: Employee
             cascade: {  }
             fetch: LAZY
@@ -78,7 +78,7 @@ AppBundle\Entity\Project:
                 projectManager:
                     referencedColumnName: id
             orphanRemoval: false
-        copiedfrom:
+        copiedFrom:
             targetEntity: Project
             cascade: {  }
             fetch: LAZY

@@ -37,7 +37,7 @@ class ProjectType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            //->add('istemplate')
+            //->add('isTemplate')
             ->add('title')
             // ->add('created', Type\DatetimeType::class)
             // ->add('modified', Type\DatetimeType::class)
@@ -49,11 +49,11 @@ class ProjectType extends AbstractType
             /*->add('state', Type\ChoiceType::class, [
                 'choices' => array_flip(self::STATUS),
                 ])*/
-            ->add('startdate', Type\DateType::class, [
+            ->add('startDate', Type\DateType::class, [
                 'data' => new \DateTime(),
                 'format' => 'dd.MM.yyyy'
                 ])
-            ->add('enddate', Type\DateType::class,  [
+            ->add('endDate', Type\DateType::class,  [
                 'data' => new \DateTime(),
                 'format' => 'dd.MM.yyyy'
                 ])
