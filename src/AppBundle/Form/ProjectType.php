@@ -23,7 +23,7 @@ class ProjectType extends AbstractType
      * Status for projects
      * @const array
      */
-    const STATUS = [
+    const STATES = [
         0 => 'new',
         1 => 'in progress',
         2 => 'completed',
@@ -47,7 +47,7 @@ class ProjectType extends AbstractType
                 'choices' => array_flip(self::PRIORITIES),
                 ])
             /*->add('state', Type\ChoiceType::class, [
-                'choices' => array_flip(self::STATUS),
+                'choices' => array_flip(self::STATES),
                 ])*/
             ->add('startDate', Type\DateType::class, [
                 'data' => new \DateTime(),

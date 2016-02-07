@@ -24,7 +24,7 @@ AppBundle\Entity\Project:
     fields:
         isTemplate:
             type: boolean
-            nullable: true
+            nullable: false
             column: isTemplate
         title:
             type: string
@@ -46,10 +46,10 @@ AppBundle\Entity\Project:
             nullable: true
             column: permissionDate
         priority:
-            type: boolean
+            type: smallint
             nullable: true
         state:
-            type: boolean
+            type: smallint
             nullable: true
         startDate:
             type: date

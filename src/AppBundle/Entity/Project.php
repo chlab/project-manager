@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use AppBundle\Form\ProjectType;
 
 /**
  * Project
@@ -25,7 +26,7 @@ class Project
     /**
      * @var boolean
      *
-     * @ORM\Column(name="isTemplate", type="boolean", nullable=true)
+     * @ORM\Column(name="isTemplate", type="boolean", nullable=false)
      */
     private $isTemplate;
 
@@ -66,16 +67,16 @@ class Project
     private $permissionDate;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="priority", type="boolean", nullable=true)
+     * @ORM\Column(name="priority", type="smallint", nullable=true)
      */
     private $priority;
 
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="state", type="boolean", nullable=true)
+     * @ORM\Column(name="state", type="smallint", nullable=true)
      */
     private $state;
 
@@ -287,7 +288,7 @@ class Project
     /**
      * Set priority
      *
-     * @param boolean $priority
+     * @param integer $priority
      *
      * @return Project
      */
@@ -301,7 +302,7 @@ class Project
     /**
      * Get priority
      *
-     * @return boolean
+     * @return integer
      */
     public function getPriority()
     {
@@ -311,7 +312,7 @@ class Project
     /**
      * Set state
      *
-     * @param boolean $state
+     * @param integer $state
      *
      * @return Project
      */
@@ -325,11 +326,28 @@ class Project
     /**
      * Get state
      *
-     * @return boolean
+     * @return integer
      */
     public function getState()
     {
         return $this->state;
+    }
+
+    /**
+     * Get state as text
+     *
+     * @return string
+     */
+    public function getStateText()
+    {
+        $states = ProjectType::STATES;
+        $state  = $this->getState();
+        if (!is_null($state)) {
+            return $states[$this->getState()];
+        }
+        else {
+            return '';
+        }
     }
 
     /**
