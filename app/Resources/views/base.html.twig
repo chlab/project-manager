@@ -13,7 +13,9 @@
 <body>
     {% include 'nav.html.twig' %}
 
-    {% block body %}{% endblock %}
+    <div class="container">
+        {% block body %}{% endblock %}
+    </div>
     {% block javascripts %}{% endblock %}
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script src="{{ asset('js/bootstrap.js') }}"></script>

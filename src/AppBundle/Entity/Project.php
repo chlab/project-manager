@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Project
@@ -31,6 +32,7 @@ class Project
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
     private $title;
@@ -108,6 +110,7 @@ class Project
     /**
      * @var \AppBundle\Entity\Employee
      *
+     * @Assert\NotBlank()
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Employee")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="projectManager", referencedColumnName="id")
