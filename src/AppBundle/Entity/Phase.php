@@ -94,12 +94,10 @@ class Phase
     /**
      * @var \AppBundle\Entity\Project
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Project")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="projectId", referencedColumnName="id")
-     * })
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Project", inversedBy="phases")
+     * @ORM\JoinColumn(name="projectId", referencedColumnName="id")
      */
-    private $projectid;
+    private $project;
 
     /**
      * @var \AppBundle\Entity\Phase
@@ -364,27 +362,27 @@ class Phase
     }
 
     /**
-     * Set projectid
+     * Set project
      *
-     * @param \AppBundle\Entity\Project $projectid
+     * @param \AppBundle\Entity\Project $project
      *
      * @return Phase
      */
-    public function setProjectid(\AppBundle\Entity\Project $projectid = null)
+    public function setProject(\AppBundle\Entity\Project $project = null)
     {
-        $this->projectid = $projectid;
+        $this->project = $project;
 
         return $this;
     }
 
     /**
-     * Get projectid
+     * Get project
      *
      * @return \AppBundle\Entity\Project
      */
-    public function getProjectid()
+    public function getProject()
     {
-        return $this->projectid;
+        return $this->project;
     }
 
     /**

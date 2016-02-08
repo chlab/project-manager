@@ -129,6 +129,13 @@ class Project
      */
     private $copiedFrom;
 
+    /**
+     * @var array
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Phase", mappedBy="project")
+     */
+    private $phases;
+
 
 
     /**
@@ -492,5 +499,15 @@ class Project
     public function getCopiedFrom()
     {
         return $this->copiedFrom;
+    }
+
+    /**
+     * Get phases
+     *
+     * @return array
+     */
+    public function getPhases()
+    {
+        return $this->phases;
     }
 }
