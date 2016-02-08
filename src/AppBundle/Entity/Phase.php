@@ -54,7 +54,7 @@ class Phase
      *
      * @ORM\Column(name="startDate", type="date", nullable=true)
      */
-    private $startdate;
+    private $startDate;
 
     /**
      * @var \DateTime
@@ -68,7 +68,7 @@ class Phase
      *
      * @ORM\Column(name="actualStartDate", type="date", nullable=true)
      */
-    private $actualstartdate;
+    private $actualStartDate;
 
     /**
      * @var \DateTime
@@ -82,7 +82,7 @@ class Phase
      *
      * @ORM\Column(name="clearanceDate", type="date", nullable=true)
      */
-    private $clearancedate;
+    private $clearanceDate;
 
     /**
      * @var boolean
@@ -220,13 +220,13 @@ class Phase
     /**
      * Set startdate
      *
-     * @param \DateTime $startdate
+     * @param \DateTime $startDate
      *
      * @return Phase
      */
-    public function setStartdate($startdate)
+    public function setStartDate($startDate)
     {
-        $this->startdate = $startdate;
+        $this->startDate = $startDate;
 
         return $this;
     }
@@ -236,9 +236,9 @@ class Phase
      *
      * @return \DateTime
      */
-    public function getStartdate()
+    public function getStartDate()
     {
-        return $this->startdate;
+        return $this->startDate;
     }
 
     /**
@@ -266,27 +266,27 @@ class Phase
     }
 
     /**
-     * Set actualstartdate
+     * Set actualStartDate
      *
-     * @param \DateTime $actualstartdate
+     * @param \DateTime $actualStartDate
      *
      * @return Phase
      */
-    public function setActualstartdate($actualstartdate)
+    public function setActualstartdate($actualStartDate)
     {
-        $this->actualstartdate = $actualstartdate;
+        $this->actualStartDate = $actualStartDate;
 
         return $this;
     }
 
     /**
-     * Get actualstartdate
+     * Get actualStartDate
      *
      * @return \DateTime
      */
     public function getActualstartdate()
     {
-        return $this->actualstartdate;
+        return $this->actualStartDate;
     }
 
     /**
@@ -314,27 +314,27 @@ class Phase
     }
 
     /**
-     * Set clearancedate
+     * Set clearanceDate
      *
-     * @param \DateTime $clearancedate
+     * @param \DateTime $clearanceDate
      *
      * @return Phase
      */
-    public function setClearancedate($clearancedate)
+    public function setClearanceDate($clearanceDate)
     {
-        $this->clearancedate = $clearancedate;
+        $this->clearanceDate = $clearanceDate;
 
         return $this;
     }
 
     /**
-     * Get clearancedate
+     * Get clearanceDate
      *
      * @return \DateTime
      */
-    public function getClearancedate()
+    public function getClearanceDate()
     {
-        return $this->clearancedate;
+        return $this->clearanceDate;
     }
 
     /**

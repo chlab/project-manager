@@ -10,50 +10,45 @@
               </div>
         </div>
 
-        <div class="row">
-            <!-- Phases -->
-            <div class="col-md-6">
-                {% for phase in project.phases %}
-                    <h3>{{ phase.name }}</h3>
-                {% endfor %}
-            </div>
+        <!-- Project details -->
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Freigabe</th>
+                    <td>{% if project.permissiondate %}{{ project.permissionDate|date('Y-m-d') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Priorität</th>
+                    <td>{% if project.priority %}Yes{% else %}No{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>{{ project.stateText }}</td>
+                </tr>
+                <tr>
+                    <th>Geplanter Start</th>
+                    <td>{% if project.startdate %}{{ project.startDate|date }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Geplanter Abschluss</th>
+                    <td>{% if project.enddate %}{{ project.endDate|date }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Effektiver Start</th>
+                    <td>{% if project.actualstartdate %}{{ project.actualStartDate|date }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Effektiver Abschluss</th>
+                    <td>{% if project.actualenddate %}{{ project.actualEndDate|date }}{% endif %}</td>
+                </tr>
+            </tbody>
+        </table>
 
-            <!-- Project details -->
-            <div class="col-md-6">
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <th>Permissiondate</th>
-                            <td>{% if project.permissiondate %}{{ project.permissiondate|date('Y-m-d') }}{% endif %}</td>
-                        </tr>
-                        <tr>
-                            <th>Priority</th>
-                            <td>{% if project.priority %}Yes{% else %}No{% endif %}</td>
-                        </tr>
-                        <tr>
-                            <th>State</th>
-                            <td>{{ project.stateText }}</td>
-                        </tr>
-                        <tr>
-                            <th>Startdate</th>
-                            <td>{% if project.startdate %}{{ project.startdate|date('Y-m-d') }}{% endif %}</td>
-                        </tr>
-                        <tr>
-                            <th>Enddate</th>
-                            <td>{% if project.enddate %}{{ project.enddate|date('Y-m-d') }}{% endif %}</td>
-                        </tr>
-                        <tr>
-                            <th>Actualstartdate</th>
-                            <td>{% if project.actualstartdate %}{{ project.actualstartdate|date('Y-m-d') }}{% endif %}</td>
-                        </tr>
-                        <tr>
-                            <th>Actualenddate</th>
-                            <td>{% if project.actualenddate %}{{ project.actualenddate|date('Y-m-d') }}{% endif %}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <!-- Phases -->
+        <h2>Phases</h2>
+        {% for phase in project.phases %}
+            {% include 'phase/show.html.twig' %}
+        {% endfor %}
 
         <div class="buttons">
             <ul class="list-inline">
