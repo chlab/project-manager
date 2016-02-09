@@ -39,9 +39,6 @@ class ProjectType extends AbstractType
         $builder
             //->add('isTemplate')
             ->add('title')
-            // ->add('created', Type\DatetimeType::class)
-            // ->add('modified', Type\DatetimeType::class)
-            // ->add('deleted', DatetimeType::class)
             // ->add('permissiondate', Type\DateType::class)
             ->add('priority', Type\ChoiceType::class, [
                 'choices' => array_flip(self::PRIORITIES),

@@ -92,7 +92,7 @@ class Activity
      *   @ORM\JoinColumn(name="phaseId", referencedColumnName="id")
      * })
      */
-    private $phaseid;
+    private $phase;
 
     /**
      * @var \AppBundle\Entity\Employee
@@ -333,27 +333,27 @@ class Activity
     }
 
     /**
-     * Set phaseid
+     * Set phase
      *
-     * @param \AppBundle\Entity\Phase $phaseid
+     * @param \AppBundle\Entity\Phase $phase
      *
      * @return Activity
      */
-    public function setPhaseid(\AppBundle\Entity\Phase $phaseid = null)
+    public function setPhase(\AppBundle\Entity\Phase $phase = null)
     {
-        $this->phaseid = $phaseid;
+        $this->phase = $phase;
 
         return $this;
     }
 
     /**
-     * Get phaseid
+     * Get phase
      *
      * @return \AppBundle\Entity\Phase
      */
-    public function getPhaseid()
+    public function getPhase()
     {
-        return $this->phaseid;
+        return $this->phase;
     }
 
     /**
