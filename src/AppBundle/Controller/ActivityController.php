@@ -36,23 +36,42 @@ class ActivityController extends Controller
     /**
      * Creates a new Activity entity.
      *
-     * @todo make phase a hidden field when it's set
-     * 
      * @Route("/new", name="activity_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
     {
         $activity = new Activity();
-        $form = $this->createForm('AppBundle\Form\ActivityType', $activity);
+
+        // create form and pass phase and project request vars
+        $form = $this->createForm('AppBundle\Form\ActivityType', $activity, [
+            'phaseId' => $request->get('phase'),
+            'projectId' => $request->get('project'),
+            ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            if (!is_null($request->get('phase'))) {
+                $phase = $em->getRepository('AppBundle:Phase')->find($request->get('phase'));
+                if (!$phase) {
+                    throw new \Exception('Invalid phase');
+                }
+                $activity->setPhase($phase);
+            }
             $em->persist($activity);
             $em->flush();
 
-            return $this->redirectToRoute('activity_show', array('id' => $activity->getId()));
+            if (!is_null($request->get('project'))) {
+                $route = 'project_show';
+                $id = $request->get('project');
+            }
+            else {
+                $route = 'activity_show';
+                $id = $activity->getId();
+            }
+
+            return $this->redirectToRoute($route, array('id' => $id));
         }
 
         return $this->render('activity/new.html.twig', array(

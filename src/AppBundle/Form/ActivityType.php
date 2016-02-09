@@ -34,12 +34,21 @@ class ActivityType extends AbstractType
                 'data' => new \DateTime(),
                 'format' => 'dd.MM.yyyy'
                 ])*/
-            ->add('phase', \Symfony\Bridge\Doctrine\Form\Type\EntityType::class, [
-                'class' => 'AppBundle\Entity\Phase',
-                'choice_label' => 'name',
-                ])
             ->add('responsibleuser')
         ;
+
+        if (isset($options['phaseId'])) {
+            $builder->add('phase', Type\HiddenType::class, [
+                'data' => $options['phaseId'],
+                'mapped' => false,
+                ]);
+        }
+        if (isset($options['projectId'])) {
+            $builder->add('project', Type\HiddenType::class, [
+                'data' => $options['projectId'],
+                'mapped' => false,
+                ]);
+        }
     }
     
     /**
@@ -48,7 +57,9 @@ class ActivityType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Activity'
+            'data_class' => 'AppBundle\Entity\Activity',
+            'phaseId' => null,
+            'projectId' => null,
         ));
     }
 }
