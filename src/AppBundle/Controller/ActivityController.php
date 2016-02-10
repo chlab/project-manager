@@ -87,12 +87,13 @@ class ActivityController extends Controller
      * @Route("/{id}", name="activity_show")
      * @Method("GET")
      */
-    public function showAction(Activity $activity)
+    public function showAction(Activity $activity, Request $request)
     {
         $deleteForm = $this->createDeleteForm($activity);
 
         return $this->render('activity/show.html.twig', array(
             'activity' => $activity,
+            'project' => $request->get('project'),
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -119,6 +120,7 @@ class ActivityController extends Controller
 
         return $this->render('activity/edit.html.twig', array(
             'activity' => $activity,
+            'project' => $request->get('project'),
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
@@ -141,7 +143,7 @@ class ActivityController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('activity_index');
+        return $this->redirectToRoute('project_index');
     }
 
     /**
