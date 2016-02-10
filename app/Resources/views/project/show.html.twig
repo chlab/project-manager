@@ -60,14 +60,14 @@
                 <div class="buttons">
                     <ul class="list-inline">
                         <li>
-                            <a href="{{ path('project_index') }}" class="btn btn-default">Back</a>
+                            <a href="{{ path('project_index') }}" class="btn btn-default">zurück</a>
                         </li>
                         <li>
-                            <a href="{{ path('project_edit', { 'id': project.id }) }}" class="btn btn-default">Edit</a>
+                            <a href="{{ path('project_edit', { 'id': project.id }) }}" class="btn btn-default">Bearbeiten</a>
                         </li>
                         <li>
                             {{ form_start(delete_form) }}
-                                <input type="submit" value="Delete" class="btn btn-danger">
+                                <input type="submit" value="Löschen" class="btn btn-danger">
                             {{ form_end(delete_form) }}
                         </li>
                     </ul>
