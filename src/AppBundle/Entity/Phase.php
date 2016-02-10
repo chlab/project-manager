@@ -107,8 +107,14 @@ class Phase
      *   @ORM\JoinColumn(name="previousPhaseId", referencedColumnName="id")
      * })
      */
-    private $previousphaseid;
+    private $previousPhaseId;
 
+    /**
+     * @var array
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Activity", mappedBy="phase")
+     */
+    private $activities;
 
 
     /**
@@ -386,26 +392,36 @@ class Phase
     }
 
     /**
-     * Set previousphaseid
+     * Set previousPhaseId
      *
-     * @param \AppBundle\Entity\Phase $previousphaseid
+     * @param \AppBundle\Entity\Phase $previousPhaseId
      *
      * @return Phase
      */
-    public function setPreviousphaseid(\AppBundle\Entity\Phase $previousphaseid = null)
+    public function setPreviousphaseid(\AppBundle\Entity\Phase $previousPhaseId = null)
     {
-        $this->previousphaseid = $previousphaseid;
+        $this->previousPhaseId = $previousPhaseId;
 
         return $this;
     }
 
     /**
-     * Get previousphaseid
+     * Get previousPhaseId
      *
      * @return \AppBundle\Entity\Phase
      */
     public function getPreviousphaseid()
     {
-        return $this->previousphaseid;
+        return $this->previousPhaseId;
+    }
+
+    /**
+     * Get activities
+     *
+     * @return array
+     */
+    public function getActivities()
+    {
+        return $this->activities;
     }
 }

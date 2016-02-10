@@ -1,33 +1,53 @@
-<div class="row">
-	<div class="col-md-6">
-		<h3>{{ phase.name }}</h3>
-		<table class="table">
-			<tbody>
-				<tr>
-					<td>Freigabe</td>
-					<td>{{ phase.clearanceDate is empty ? '' : phase.clearanceDate|date }}</td>
-				</tr>
-				<tr>
-					<td>Geplanter Start</td>
-					<td>{{ phase.startDate is empty ? '' : phase.startDate|date }}</td>
-				</tr>
-				<tr>
-					<td>Geplanter Abschluss</td>
-					<td>{{ phase.endDate is empty ? '' : phase.endDate|date }}</td>
-				</tr>
-				<tr>
-					<td>Effektiver Start</td>
-					<td>{{ phase.actualStartDate is empty ? '' : phase.actualStartDate|date }}</td>
-				</tr>
-				<tr>
-					<td>Effektiver Abschluss</td>
-					<td>{{ phase.actualEndDate is empty ? '' : phase.actualEndDate|date }}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<div class="col-md-6">
-		<h4>Aktivitäten</h4>
-		<a class="btn btn-default" href="{{ path('activity_new', { 'phase': phase.id, 'project': project.id }) }}">Aktivität hinzufügen</a>
-	</div>
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <div class="panel-title">{{ phase.name }}</div>
+    </div>
+    <div class="panel-body">
+       
+            <div class="row">
+                <div class="col-md-4">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>Freigabe</td>
+                                <td>{{ phase.clearanceDate is empty ? '' : phase.clearanceDate|date }}</td>
+                            </tr>
+                            <tr>
+                                <td>Geplanter Start</td>
+                                <td>{{ phase.startDate is empty ? '' : phase.startDate|date }}</td>
+                            </tr>
+                            <tr>
+                                <td>Geplanter Abschluss</td>
+                                <td>{{ phase.endDate is empty ? '' : phase.endDate|date }}</td>
+                            </tr>
+                            <tr>
+                                <td>Effektiver Start</td>
+                                <td>{{ phase.actualStartDate is empty ? '' : phase.actualStartDate|date }}</td>
+                            </tr>
+                            <tr>
+                                <td>Effektiver Abschluss</td>
+                                <td>{{ phase.actualEndDate is empty ? '' : phase.actualEndDate|date }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-8">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Aktivität</th>
+                                <th>Start</th>
+                                <th>Ende</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                {% for activity in phase.activities %}
+                                    {% include 'activity/show_in_table.html.twig' %}
+                                {% endfor %}
+                        </tbody>
+                    </table>
+                    <a class="btn btn-default" href="{{ path('activity_new', { 'phase': phase.id, 'project': project.id }) }}">Aktivität hinzufügen</a>
+                </div>
+            </div>
+    </div>
 </div>

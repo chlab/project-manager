@@ -26,7 +26,7 @@ class Activity
      *
      * @ORM\Column(name="isMilestone", type="boolean", nullable=true)
      */
-    private $ismilestone;
+    private $isMilestone;
 
     /**
      * @var string
@@ -87,7 +87,7 @@ class Activity
     /**
      * @var \AppBundle\Entity\Phase
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Phase")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Phase", inversedBy="activities")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="phaseId", referencedColumnName="id")
      * })
@@ -102,7 +102,7 @@ class Activity
      *   @ORM\JoinColumn(name="responsibleUser", referencedColumnName="id")
      * })
      */
-    private $responsibleuser;
+    private $responsibleUser;
 
 
 
@@ -117,27 +117,27 @@ class Activity
     }
 
     /**
-     * Set ismilestone
+     * Set isMilestone
      *
-     * @param boolean $ismilestone
+     * @param boolean $isMilestone
      *
      * @return Activity
      */
-    public function setIsmilestone($ismilestone)
+    public function setIsmilestone($isMilestone)
     {
-        $this->ismilestone = $ismilestone;
+        $this->isMilestone = $isMilestone;
 
         return $this;
     }
 
     /**
-     * Get ismilestone
+     * Get isMilestone
      *
      * @return boolean
      */
     public function getIsmilestone()
     {
-        return $this->ismilestone;
+        return $this->isMilestone;
     }
 
     /**
@@ -357,26 +357,26 @@ class Activity
     }
 
     /**
-     * Set responsibleuser
+     * Set responsibleUser
      *
-     * @param \AppBundle\Entity\Employee $responsibleuser
+     * @param \AppBundle\Entity\Employee $responsibleUser
      *
      * @return Activity
      */
-    public function setResponsibleuser(\AppBundle\Entity\Employee $responsibleuser = null)
+    public function setResponsibleuser(\AppBundle\Entity\Employee $responsibleUser = null)
     {
-        $this->responsibleuser = $responsibleuser;
+        $this->responsibleUser = $responsibleUser;
 
         return $this;
     }
 
     /**
-     * Get responsibleuser
+     * Get responsibleUser
      *
      * @return \AppBundle\Entity\Employee
      */
     public function getResponsibleuser()
     {
-        return $this->responsibleuser;
+        return $this->responsibleUser;
     }
 }

@@ -1,0 +1,5 @@
+<tr>
+    <td>{{ activity.name }}</td>
+    <td>{% if activity.startDate %}{{ activity.startDate|date }}{% endif %}</td>
+    <td>{% if activity.endDate %}{{ activity.endDate|date }}{% endif %}</td>
+</tr>
