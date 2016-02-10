@@ -1,20 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Activity creation</h1>
+    <div class="container">
+        <h1>Activity creation</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
 
-        <ul class="list-inline">
-            <li>
-                <a class="btn btn-default" href="{{ path('activity_index') }}">zurück</a>
-            </li>
-            <li>
-                <input type="submit" value="Speichern" class="btn btn-primary" />
-            </li>
-        </ul>
-        
-    {{ form_end(form) }}
-    
+            <ul class="list-inline">
+                <li>
+                    <a class="btn btn-default" href="{{ path('project_show', { id: project }) }}">zurück</a>
+                </li>
+                <li>
+                    <input type="submit" value="Speichern" class="btn btn-primary" />
+                </li>
+            </ul>
+            
+        {{ form_end(form) }}
+    </div>
 {% endblock %}

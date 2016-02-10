@@ -76,6 +76,7 @@ class ActivityController extends Controller
 
         return $this->render('activity/new.html.twig', array(
             'activity' => $activity,
+            'project' => $request->get('project'),
             'form' => $form->createView(),
         ));
     }
