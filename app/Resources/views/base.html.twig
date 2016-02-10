@@ -4,8 +4,15 @@
     <title>Project Manager</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet" media="screen">
+    {#<link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('css/app.less') }}" rel="stylesheet" media="screen">#}
+
+    {% stylesheets
+        'css/bootstrap.css'
+        'css/app.less'
+        filter='cssrewrite' output='css/compiled/app.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
 
     <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
     {#% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %#}
@@ -14,11 +21,17 @@
 <body>
     {% include 'nav.html.twig' %}
 
-    <div class="container">
+    <div class="container-fluid">
         {% block body %}{% endblock %}
     </div>
     {% block javascripts %}{% endblock %}
-    <script src="{{ asset('js/jquery.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.js') }}"></script>
+    {% javascripts
+        'js/jquery.js'
+        'js/bootstrap.js'
+        output='js/compiled/lib.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {#<script src="{{ asset('js/jquery.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>#}
 </body>
 </html>
