@@ -41,13 +41,11 @@
             </li>
         </ul>
 
-        <h2>Personelle Ressourcen</h2>
-        <ul class="list-inline">
-            <li>
-                <a class="btn btn-default" href="{{ path('activity_hr_new', { 'activity_id': activity.id }) }}">
-                    Personelle Ressourcen hinzufügen
-                </a>
-            </li>
-        </ul>
+        <div class="row">
+            <div class="col-md-6">
+                {% include 'humanresource/show.html.twig' %}
+            </div>
+        </div>
+        
     </div>
 {% endblock %}
