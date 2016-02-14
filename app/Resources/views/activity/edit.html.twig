@@ -8,7 +8,7 @@
             {{ form_widget(edit_form) }}
             <ul class="list-inline">
                 <li>
-                    <a class="btn btn-default" href="{{ path('activity_show', { 'id': activity.id, 'project': project }) }}">zurück</a>
+                    <a class="btn btn-default" href="{{ path('activity_show', { 'id': activity.id, 'project_id': project_id }) }}">zurück</a>
                 </li>
                 <li><input class="btn btn-primary" type="submit" value="Save" /></li>
             </ul>

@@ -1,6 +1,6 @@
 <tr>
     <td>
-    	<a href="{{ path('activity_show', { 'id': activity.id, 'project': project.id }) }}">{{ activity.name }}</a>
+    	<a href="{{ path('activity_show', { 'id': activity.id, 'project_id': project.id }) }}">{{ activity.name }}</a>
     </td>
     <td>{% if activity.startDate %}{{ activity.startDate|date }}{% endif %}</td>
     <td>{% if activity.endDate %}{{ activity.endDate|date }}{% endif %}</td>

@@ -4,7 +4,7 @@
     <div class="container">
         <h1>{{ activity.name }}</h1>
 
-        <table class="table">
+        <table class="table legend-one-third">
             <tbody>
                 <tr>
                     <th>Id</th>
@@ -35,10 +35,10 @@
 
         <ul class="list-inline">
             <li>
-                <a class="btn btn-default" href="{{ path('project_show', { 'id': project }) }}">Zurück zum Projekt</a>
+                <a class="btn btn-default" href="{{ path('project_show', { 'id': project_id }) }}">Zurück zum Projekt</a>
             </li>
             <li>
-                <a class="btn btn-default" href="{{ path('activity_edit', { 'id': activity.id, 'project': project }) }}">Bearbeiten</a>
+                <a class="btn btn-default" href="{{ path('activity_edit', { 'id': activity.id, 'project_id': project_id }) }}">Bearbeiten</a>
             </li>
             <li>
                 {{ form_start(delete_form) }}

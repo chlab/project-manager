@@ -11,8 +11,6 @@ use AppBundle\Form\ActivityType;
 
 /**
  * Activity controller.
- *
- * @Route("/activity")
  */
 class ActivityController extends Controller
 {
@@ -22,6 +20,7 @@ class ActivityController extends Controller
      * @Route("/", name="activity_index")
      * @Method("GET")
      */
+    /*
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -31,12 +30,12 @@ class ActivityController extends Controller
         return $this->render('activity/index.html.twig', array(
             'activities' => $activities,
         ));
-    }
+    }*/
 
     /**
      * Creates a new Activity entity.
      *
-     * @Route("/new", name="activity_new")
+     * @Route("/project/{project_id}/activity/new", name="activity_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -45,8 +44,8 @@ class ActivityController extends Controller
 
         // create form and pass phase and project request vars
         $form = $this->createForm('AppBundle\Form\ActivityType', $activity, [
-            'phaseId' => $request->get('phase'),
-            'projectId' => $request->get('project'),
+            'phaseId' => $request->get('phase_id'),
+            'projectId' => $request->get('project_id'),
             ]);
         $form->handleRequest($request);
 
@@ -76,7 +75,7 @@ class ActivityController extends Controller
 
         return $this->render('activity/new.html.twig', array(
             'activity' => $activity,
-            'project' => $request->get('project'),
+            'project_id' => $request->get('project_id'),
             'form' => $form->createView(),
         ));
     }
@@ -84,7 +83,7 @@ class ActivityController extends Controller
     /**
      * Finds and displays a Activity entity.
      *
-     * @Route("/{id}", name="activity_show")
+     * @Route("/project/{project_id}/activity/{id}", name="activity_show")
      * @Method("GET")
      */
     public function showAction(Activity $activity, Request $request)
@@ -93,7 +92,7 @@ class ActivityController extends Controller
 
         return $this->render('activity/show.html.twig', array(
             'activity' => $activity,
-            'project' => $request->get('project'),
+            'project_id' => $request->get('project_id'),
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -101,7 +100,7 @@ class ActivityController extends Controller
     /**
      * Displays a form to edit an existing Activity entity.
      *
-     * @Route("/{id}/edit", name="activity_edit")
+     * @Route("/project/{project_id}/activity/{id}/edit", name="activity_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Activity $activity)
@@ -120,7 +119,7 @@ class ActivityController extends Controller
 
         return $this->render('activity/edit.html.twig', array(
             'activity' => $activity,
-            'project' => $request->get('project'),
+            'project_id' => $request->get('project_id'),
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
