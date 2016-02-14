@@ -67,15 +67,6 @@ class Employee
     private $roleid;
 
     /**
-     * String representation for usage in forms, etc.
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->getFullname();
-    }
-
-    /**
      * Get the full name (first- and lastname)
      * 
      * @return string

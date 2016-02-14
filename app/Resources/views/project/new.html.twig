@@ -1,18 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Project creation</h1>
+    <div class="container">
+        <h1>Project creation</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <ul class="list-inline">
-            <li>
-                <a href="{{ path('project_index') }}" class="btn btn-default">back</a>
-            </li>
-            <li>
-                <input type="submit" class="btn btn-primary" value="Create" />
-            </li>
-        </ul>
-    {{ form_end(form) }}
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <ul class="list-inline">
+                <li>
+                    <a href="{{ path('project_index') }}" class="btn btn-default">back</a>
+                </li>
+                <li>
+                    <input type="submit" class="btn btn-primary" value="Create" />
+                </li>
+            </ul>
+        {{ form_end(form) }}
+    </div>
 
 {% endblock %}

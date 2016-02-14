@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class ProjectType extends AbstractType
 {
@@ -56,7 +57,11 @@ class ProjectType extends AbstractType
                 ])
             // ->add('actualstartdate', Type\DateType::class)
             // ->add('actualenddate', Type\DateType::class)
-            ->add('projectmanager')
+            ->add('projectManager', EntityType::class, [
+                'label' => 'Zuständig',
+                'choice_label' => 'fullname',
+                'class' => 'AppBundle:Employee',
+                ])
             //->add('copiedfrom')
         ;
     }
