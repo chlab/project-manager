@@ -104,7 +104,20 @@ class Activity
      */
     private $responsibleUser;
 
+    /**
+     * @var array
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Humanresource", mappedBy="activity")
+     */
+    private $humanResources;
 
+    /**
+     * @var array
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Financialresource", mappedBy="activity")
+     */
+    private $financialResources;
+    
 
     /**
      * Get id
@@ -378,5 +391,35 @@ class Activity
     public function getResponsibleuser()
     {
         return $this->responsibleUser;
+    }
+
+    /**
+     * Get project of associated phase
+     * @return \AppBundle\Entity\Project
+     */
+    public function getAssociatedProject()
+    {
+        $phase = $this->getPhase();
+        return $phase->getProject();
+    }
+
+    /**
+     * Get human resources
+     *
+     * @return array
+     */
+    public function getHumanResources()
+    {
+        return $this->humanResources;
+    }
+
+    /**
+     * Get financial resources
+     *
+     * @return array
+     */
+    public function getFinancialResources()
+    {
+        return $this->financialResources;
     }
 }

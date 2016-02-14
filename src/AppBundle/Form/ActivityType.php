@@ -58,6 +58,7 @@ class ActivityType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'AppBundle\Entity\Activity',
+            // @todo we probably don't need these anymore
             'phaseId' => null,
             'projectId' => null,
         ));

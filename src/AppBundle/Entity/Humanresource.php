@@ -24,12 +24,12 @@ class Humanresource
     /**
      * @var \AppBundle\Entity\Activity
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Activity")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Activity", inversedBy="humanResources")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="activityId", referencedColumnName="id")
      * })
      */
-    private $activityid;
+    private $activity;
 
     /**
      * @var \AppBundle\Entity\Role
@@ -39,7 +39,7 @@ class Humanresource
      *   @ORM\JoinColumn(name="roleId", referencedColumnName="id")
      * })
      */
-    private $roleid;
+    private $role;
 
     /**
      * @var \AppBundle\Entity\Employee
@@ -49,8 +49,14 @@ class Humanresource
      *   @ORM\JoinColumn(name="employeeId", referencedColumnName="id")
      * })
      */
-    private $employeeid;
+    private $employee;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="hours", type="integer")
+     */
+    private $hours;
 
 
     /**
@@ -64,74 +70,95 @@ class Humanresource
     }
 
     /**
-     * Set activityid
+     * Set activity
      *
-     * @param \AppBundle\Entity\Activity $activityid
+     * @param \AppBundle\Entity\Activity $activity
      *
      * @return Humanresource
      */
-    public function setActivityid(\AppBundle\Entity\Activity $activityid = null)
+    public function setActivity(\AppBundle\Entity\Activity $activity = null)
     {
-        $this->activityid = $activityid;
+        $this->activity = $activity;
 
         return $this;
     }
 
     /**
-     * Get activityid
+     * Get activity
      *
      * @return \AppBundle\Entity\Activity
      */
-    public function getActivityid()
+    public function getActivity()
     {
-        return $this->activityid;
+        return $this->activity;
     }
 
     /**
-     * Set roleid
+     * Set role
      *
-     * @param \AppBundle\Entity\Role $roleid
+     * @param \AppBundle\Entity\Role $role
      *
      * @return Humanresource
      */
-    public function setRoleid(\AppBundle\Entity\Role $roleid = null)
+    public function setRole(\AppBundle\Entity\Role $role = null)
     {
-        $this->roleid = $roleid;
+        $this->role = $role;
 
         return $this;
     }
 
     /**
-     * Get roleid
+     * Get role
      *
      * @return \AppBundle\Entity\Role
      */
-    public function getRoleid()
+    public function getRole()
     {
-        return $this->roleid;
+        return $this->role;
     }
 
     /**
-     * Set employeeid
+     * Set employee
      *
-     * @param \AppBundle\Entity\Employee $employeeid
+     * @param \AppBundle\Entity\Employee $employee
      *
      * @return Humanresource
      */
-    public function setEmployeeid(\AppBundle\Entity\Employee $employeeid = null)
+    public function setEmployee(\AppBundle\Entity\Employee $employee = null)
     {
-        $this->employeeid = $employeeid;
+        $this->employee = $employee;
 
         return $this;
     }
 
     /**
-     * Get employeeid
+     * Get employee
      *
      * @return \AppBundle\Entity\Employee
      */
-    public function getEmployeeid()
+    public function getEmployee()
     {
-        return $this->employeeid;
+        return $this->employee;
+    }
+
+    /**
+     * Get hours
+     *
+     * @return integer
+     */
+    public function getHours()
+    {
+        return $this->hours;
+    }
+
+    /**
+     * Set hours
+     *
+     * @param  integer $hours
+     * @return integer
+     */
+    public function setHours($hours)
+    {
+        $this->hours = $hours;
     }
 }

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1>Peronselle Ressource definieren</h1>
+
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <ul class="list-inline">
+                <li>
+                    <a class="btn btn-default" href="{{ path('activity_show', { id: activity_id, project_id: project_id }) }}">
+                        zurück
+                    </a>
+                </li>
+                <li>
+                    <input type="submit" value="Speichern" class="btn btn-primary" />
+                </li>
+            </ul>
+        {{ form_end(form) }}
+    </div>
+    
+{% endblock %}

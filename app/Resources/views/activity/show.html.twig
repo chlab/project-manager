@@ -7,27 +7,19 @@
         <table class="table legend-one-third">
             <tbody>
                 <tr>
-                    <th>Id</th>
-                    <td>{{ activity.id }}</td>
-                </tr>
-                <tr>
-                    <th>Ismilestone</th>
-                    <td>{% if activity.ismilestone %}Yes{% else %}No{% endif %}</td>
-                </tr>
-                <tr>
-                    <th>Startdate</th>
+                    <th>Geplanter Start</th>
                     <td>{% if activity.startdate %}{{ activity.startdate|date('Y-m-d') }}{% endif %}</td>
                 </tr>
                 <tr>
-                    <th>Enddate</th>
+                    <th>Geplanter Abschluss</th>
                     <td>{% if activity.enddate %}{{ activity.enddate|date('Y-m-d') }}{% endif %}</td>
                 </tr>
                 <tr>
-                    <th>Actualstartdate</th>
+                    <th>Effektiver Start</th>
                     <td>{% if activity.actualstartdate %}{{ activity.actualstartdate|date('Y-m-d') }}{% endif %}</td>
                 </tr>
                 <tr>
-                    <th>Actualenddate</th>
+                    <th>Effektiver Abschluss</th>
                     <td>{% if activity.actualenddate %}{{ activity.actualenddate|date('Y-m-d') }}{% endif %}</td>
                 </tr>
             </tbody>
@@ -38,12 +30,23 @@
                 <a class="btn btn-default" href="{{ path('project_show', { 'id': project_id }) }}">Zurück zum Projekt</a>
             </li>
             <li>
-                <a class="btn btn-default" href="{{ path('activity_edit', { 'id': activity.id, 'project_id': project_id }) }}">Bearbeiten</a>
+                <a class="btn btn-default" href="{{ path('activity_edit', { 'id': activity.id, 'project_id': project_id }) }}">
+                    Bearbeiten
+                </a>
             </li>
             <li>
                 {{ form_start(delete_form) }}
                     <input class="btn btn-danger" type="submit" value="Löschen">
                 {{ form_end(delete_form) }}
+            </li>
+        </ul>
+
+        <h2>Personelle Ressourcen</h2>
+        <ul class="list-inline">
+            <li>
+                <a class="btn btn-default" href="{{ path('activity_hr_new', { 'activity_id': activity.id }) }}">
+                    Personelle Ressourcen hinzufügen
+                </a>
             </li>
         </ul>
     </div>
