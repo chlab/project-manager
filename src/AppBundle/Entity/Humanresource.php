@@ -25,9 +25,7 @@ class Humanresource
      * @var \AppBundle\Entity\Activity
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Activity", inversedBy="humanResources")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="activityId", referencedColumnName="id")
-     * })
+     * @ORM\JoinColumn(name="activityId", referencedColumnName="id")
      */
     private $activity;
 

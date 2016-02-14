@@ -15,24 +15,6 @@ use AppBundle\Form\ActivityType;
 class ActivityController extends Controller
 {
     /**
-     * Lists all Activity entities.
-     *
-     * @Route("/", name="activity_index")
-     * @Method("GET")
-     */
-    /*
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $activities = $em->getRepository('AppBundle:Activity')->findAll();
-
-        return $this->render('activity/index.html.twig', array(
-            'activities' => $activities,
-        ));
-    }*/
-
-    /**
      * Creates a new Activity entity.
      *
      * @Route("/project/{project_id}/activity/new", name="activity_new")
