@@ -25,20 +25,32 @@ class FinancialresourceController extends Controller
      */
     public function newAction(Request $request)
     {
-        $financialresource = new Financialresource();
-        $form = $this->createForm('AppBundle\Form\FinancialresourceType', $financialresource);
+        // get activity and project for creating routes
+        $em = $this->getDoctrine()->getManager();
+        $activity = $em->getRepository('AppBundle:Activity')->find($request->get('activity_id'));
+        $project = $activity->getAssociatedProject();
+
+        $financialResource = new Financialresource();
+        $form = $this->createForm('AppBundle\Form\FinancialresourceType', $financialResource);
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
+            $financialResource->setActivity($activity);
             $em = $this->getDoctrine()->getManager();
-            $em->persist($financialresource);
+            $em->persist($financialResource);
             $em->flush();
 
-            return $this->redirectToRoute('activity_fr_show', array('id' => $financialresource->getId()));
+            return $this->redirectToRoute('activity_show', [
+                'id' => $activity->getId(),
+                'project_id' => $project->getId(),
+            ]);
         }
 
         return $this->render('financialresource/new.html.twig', array(
-            'financialresource' => $financialresource,
+            'financialresource' => $financialResource,
+            'activity_id' => $request->get('activity_id'),
+            'project_id' => $project->getId(),
             'form' => $form->createView(),
         ));
     }
