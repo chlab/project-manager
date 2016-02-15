@@ -18,23 +18,6 @@ use AppBundle\Form\HumanresourceType;
 class HumanresourceController extends Controller
 {
     /**
-     * Lists all Humanresource entities.
-     *
-     * @Route("/", name="activity_hr_index")
-     * @Method("GET")
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $humanresources = $em->getRepository('AppBundle:Humanresource')->findAll();
-
-        return $this->render('humanresource/index.html.twig', array(
-            'humanresources' => $humanresources,
-        ));
-    }
-
-    /**
      * Creates a new Humanresource entity.
      *
      * @Route("/new", name="activity_hr_new")
@@ -42,9 +25,10 @@ class HumanresourceController extends Controller
      */
     public function newAction(Request $request)
     {
-        // get corresponding activiy
+        // get activity and project for creating routes
         $em = $this->getDoctrine()->getManager();
         $activity = $em->getRepository('AppBundle:Activity')->find($request->get('activity_id'));
+        $project = $activity->getAssociatedProject();
 
         $humanresource = new Humanresource();
         $form = $this->createForm('AppBundle\Form\HumanresourceType', $humanresource);
@@ -52,18 +36,14 @@ class HumanresourceController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $humanresource->setActivity($activity);
-            $em = $this->getDoctrine()->getManager();
             $em->persist($humanresource);
             $em->flush();
 
             return $this->redirectToRoute('activity_show', [
                 'id' => $activity->getId(),
                 'project_id' => $project->getId(),
-                ]);
+            ]);
         }
-
-        // get project to build back-url
-        $project = $activity->getAssociatedProject();
 
         return $this->render('humanresource/new.html.twig', array(
             'humanresource' => $humanresource,
