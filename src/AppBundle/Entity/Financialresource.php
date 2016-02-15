@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Financialresource
  *
- * @ORM\Table(name="FinancialResource", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"})}, indexes={@ORM\Index(name="fkFinancialResourceActivity_idx", columns={"activityId"})})
+ * @ORM\Table(name="FinancialResource", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"})}, indexes={@ORM\Index(name="fkFinancialResourceActivity_idx", columns={"activityId"}), @ORM\Index(name="fkFinancialResourceCostTypeId", columns={"costTypeId"})})
  * @ORM\Entity
  */
 class Financialresource
@@ -22,25 +22,18 @@ class Financialresource
     private $id;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="typeId", type="integer", nullable=true)
-     */
-    private $typeid;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="plannedCost", type="decimal", precision=10, scale=0, nullable=true)
      */
-    private $plannedcost;
+    private $plannedCost;
 
     /**
      * @var string
      *
      * @ORM\Column(name="actualCost", type="decimal", precision=10, scale=0, nullable=true)
      */
-    private $actualcost;
+    private $actualCost;
 
     /**
      * @var \DateTime
@@ -64,15 +57,24 @@ class Financialresource
     private $deleted;
 
     /**
+     * @var \AppBundle\Entity\Costtype
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Costtype")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="costTypeId", referencedColumnName="id")
+     * })
+     */
+    private $costType;
+
+    /**
      * @var \AppBundle\Entity\Activity
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Activity")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Activity", inversedBy="financialResources")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="activityId", referencedColumnName="id")
      * })
      */
-    private $activityid;
-
+    private $activity;
 
 
     /**
@@ -86,75 +88,51 @@ class Financialresource
     }
 
     /**
-     * Set typeid
+     * Set plannedCost
      *
-     * @param integer $typeid
+     * @param string $plannedCost
      *
      * @return Financialresource
      */
-    public function setTypeid($typeid)
+    public function setPlannedCost($plannedCost)
     {
-        $this->typeid = $typeid;
+        $this->plannedCost = $plannedCost;
 
         return $this;
     }
 
     /**
-     * Get typeid
-     *
-     * @return integer
-     */
-    public function getTypeid()
-    {
-        return $this->typeid;
-    }
-
-    /**
-     * Set plannedcost
-     *
-     * @param string $plannedcost
-     *
-     * @return Financialresource
-     */
-    public function setPlannedcost($plannedcost)
-    {
-        $this->plannedcost = $plannedcost;
-
-        return $this;
-    }
-
-    /**
-     * Get plannedcost
+     * Get plannedCost
      *
      * @return string
      */
-    public function getPlannedcost()
+    public function getPlannedCost()
     {
-        return $this->plannedcost;
+        return $this->plannedCost;
     }
 
     /**
-     * Set actualcost
+     * Set actualCost
      *
-     * @param string $actualcost
+     * @param string $actualCost
      *
      * @return Financialresource
      */
-    public function setActualcost($actualcost)
+    public function setActualCost($actualCost)
     {
-        $this->actualcost = $actualcost;
+        $this->actualCost = $actualCost;
 
         return $this;
     }
 
     /**
-     * Get actualcost
+     * Get actualCost
      *
      * @return string
      */
-    public function getActualcost()
+    public function getActualCost()
     {
-        return $this->actualcost;
+        return $this->actualCost;
     }
 
     /**
@@ -230,26 +208,50 @@ class Financialresource
     }
 
     /**
-     * Set activityid
+     * Set costType
      *
-     * @param \AppBundle\Entity\Activity $activityid
+     * @param \AppBundle\Entity\Costtype $costType
      *
      * @return Financialresource
      */
-    public function setActivityid(\AppBundle\Entity\Activity $activityid = null)
+    public function setCostType(\AppBundle\Entity\Costtype $costType = null)
     {
-        $this->activityid = $activityid;
+        $this->costType = $costType;
 
         return $this;
     }
 
     /**
-     * Get activityid
+     * Get costType
+     *
+     * @return \AppBundle\Entity\Costtype
+     */
+    public function getCostType()
+    {
+        return $this->costType;
+    }
+
+    /**
+     * Set activity
+     *
+     * @param \AppBundle\Entity\Activity $activity
+     *
+     * @return Financialresource
+     */
+    public function setActivity(\AppBundle\Entity\Activity $activity = null)
+    {
+        $this->activity = $activity;
+
+        return $this;
+    }
+
+    /**
+     * Get activity
      *
      * @return \AppBundle\Entity\Activity
      */
-    public function getActivityid()
+    public function getActivity()
     {
-        return $this->activityid;
+        return $this->activity;
     }
 }

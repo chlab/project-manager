@@ -6,7 +6,7 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: de
+    locale: 'de-CH'
 
 framework:
     #esi:             ~
@@ -39,6 +39,13 @@ twig:
     strict_variables: "%kernel.debug%"
     date:
         format: j. M. Y
+    number_format:
+        decimals: 2
+        decimal_point: '.'
+        thousands_separator: "'"
+    globals:
+        default_currency: 'CHF'
+        
 
 # Doctrine Configuration
 doctrine:

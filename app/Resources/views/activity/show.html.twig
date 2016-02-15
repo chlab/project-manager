@@ -8,19 +8,19 @@
             <tbody>
                 <tr>
                     <th>Geplanter Start</th>
-                    <td>{% if activity.startdate %}{{ activity.startdate|date('Y-m-d') }}{% endif %}</td>
+                    <td>{% if activity.startdate %}{{ activity.startdate|date }}{% endif %}</td>
                 </tr>
                 <tr>
                     <th>Geplanter Abschluss</th>
-                    <td>{% if activity.enddate %}{{ activity.enddate|date('Y-m-d') }}{% endif %}</td>
+                    <td>{% if activity.enddate %}{{ activity.enddate|date }}{% endif %}</td>
                 </tr>
                 <tr>
                     <th>Effektiver Start</th>
-                    <td>{% if activity.actualstartdate %}{{ activity.actualstartdate|date('Y-m-d') }}{% endif %}</td>
+                    <td>{% if activity.actualstartdate %}{{ activity.actualstartdate|date }}{% endif %}</td>
                 </tr>
                 <tr>
                     <th>Effektiver Abschluss</th>
-                    <td>{% if activity.actualenddate %}{{ activity.actualenddate|date('Y-m-d') }}{% endif %}</td>
+                    <td>{% if activity.actualenddate %}{{ activity.actualenddate|date }}{% endif %}</td>
                 </tr>
             </tbody>
         </table>
@@ -44,6 +44,12 @@
         <div class="row">
             <div class="col-md-6">
                 {% include 'humanresource/show.html.twig' %}
+            </div>
+
+            <div class="col-md-6">
+
+                {% include 'financialresource/show.html.twig' %}
+
             </div>
         </div>
         
