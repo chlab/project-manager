@@ -9,10 +9,11 @@ Due to the time limit of this project, I focused on the must-have functionality.
 
 Todo - prio 1
 -------------
-* remove project dates, calculate from phases (or activities?)
+* ~~create new projects from templates~~
 * milestones
-* create new projects from templates
+* ~~add "start" project functionality~~
 * add "complete" project functionality
+* remove project dates, calculate from phases (or activities?)
 * automatically create milestones for the completion of each phase
 * allow referencing of files to project, phase or activities
 * calculate completion-percentage of projects and phases

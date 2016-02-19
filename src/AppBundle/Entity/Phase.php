@@ -128,6 +128,22 @@ class Phase
     }
 
     /**
+     * Copy relevant data from an existing phase
+     * 
+     * @param Phase $phase
+     * @return Phase
+     */
+    public function copyFrom(Phase $phase)
+    {
+        $this
+            ->setName($phase->getName())
+            ->setPreviousPhaseId($phase->getPreviousPhaseId())
+        ;
+
+        return $this;
+    }
+
+    /**
      * Set name
      *
      * @param string $name
@@ -398,7 +414,7 @@ class Phase
      *
      * @return Phase
      */
-    public function setPreviousphaseid(\AppBundle\Entity\Phase $previousPhaseId = null)
+    public function setPreviousPhaseId(\AppBundle\Entity\Phase $previousPhaseId = null)
     {
         $this->previousPhaseId = $previousPhaseId;
 
@@ -410,7 +426,7 @@ class Phase
      *
      * @return \AppBundle\Entity\Phase
      */
-    public function getPreviousphaseid()
+    public function getPreviousPhaseId()
     {
         return $this->previousPhaseId;
     }

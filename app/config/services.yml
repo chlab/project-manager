@@ -4,6 +4,11 @@ parameters:
 #    parameter_name: value
 
 services:
+  app.manager.project:
+      class: AppBundle\Entity\ProjectManager
+      arguments:
+          em: "@doctrine.orm.entity_manager"
+          class: AppBundle\Entity\Project
   twig.extension.intl:
           class: Twig_Extensions_Extension_Intl
           tags:

@@ -43,14 +43,13 @@ class ProjectType extends AbstractType
                 'label' => 'Titel',
                 'attr' => ['autofocus' => true],
                 ])
-            ->add('title', EntityType::class, [
+            ->add('copiedFrom', EntityType::class, [
                 'label' => 'Vorgehensmodell',
                 'choice_label' => 'title',
                 'class' => 'AppBundle:Project',
                 'query_builder' => function(EntityRepository $em) {
                     return $em->queryProjectTemplates();
-                }
-                ])
+                }])
             ->add('priority', Type\ChoiceType::class, [
                 'choices' => array_flip(self::PRIORITIES),
                 'label' => 'Priorität',
@@ -71,7 +70,6 @@ class ProjectType extends AbstractType
                 'class' => 'AppBundle:Employee',
                 'label' => 'Projektleiter',
                 ])
-            //->add('copiedfrom')
         ;
     }
     

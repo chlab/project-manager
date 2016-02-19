@@ -47,10 +47,10 @@ class ProjectController extends Controller
         $form = $this->createForm('AppBundle\Form\ProjectType', $project);
         $form->handleRequest($request);
 
+        $projectManager = $this->container->get('app.manager.project');
+
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($project);
-            $em->flush();
+            $projectManager->createProjectFromTemplate($project);
 
             return $this->redirectToRoute('project_show', array('id' => $project->getId()));
         }
