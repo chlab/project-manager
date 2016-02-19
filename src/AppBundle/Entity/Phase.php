@@ -61,7 +61,7 @@ class Phase
      *
      * @ORM\Column(name="endDate", type="date", nullable=true)
      */
-    private $enddate;
+    private $endDate;
 
     /**
      * @var \DateTime
@@ -75,7 +75,7 @@ class Phase
      *
      * @ORM\Column(name="actualEndDate", type="date", nullable=true)
      */
-    private $actualenddate;
+    private $actualEndDate;
 
     /**
      * @var \DateTime
@@ -248,27 +248,27 @@ class Phase
     }
 
     /**
-     * Set enddate
+     * Set endDate
      *
-     * @param \DateTime $enddate
+     * @param \DateTime $endDate
      *
      * @return Phase
      */
-    public function setEnddate($enddate)
+    public function setEnddate($endDate)
     {
-        $this->enddate = $enddate;
+        $this->endDate = $endDate;
 
         return $this;
     }
 
     /**
-     * Get enddate
+     * Get endDate
      *
      * @return \DateTime
      */
     public function getEnddate()
     {
-        return $this->enddate;
+        return $this->endDate;
     }
 
     /**
@@ -278,7 +278,7 @@ class Phase
      *
      * @return Phase
      */
-    public function setActualstartdate($actualStartDate)
+    public function setActualStartDate($actualStartDate)
     {
         $this->actualStartDate = $actualStartDate;
 
@@ -290,33 +290,33 @@ class Phase
      *
      * @return \DateTime
      */
-    public function getActualstartdate()
+    public function getActualStartDate()
     {
         return $this->actualStartDate;
     }
 
     /**
-     * Set actualenddate
+     * Set actualEndDate
      *
-     * @param \DateTime $actualenddate
+     * @param \DateTime $actualEndDate
      *
      * @return Phase
      */
-    public function setActualenddate($actualenddate)
+    public function setActualendDate($actualEndDate)
     {
-        $this->actualenddate = $actualenddate;
+        $this->actualEndDate = $actualEndDate;
 
         return $this;
     }
 
     /**
-     * Get actualenddate
+     * Get actualEndDate
      *
      * @return \DateTime
      */
-    public function getActualenddate()
+    public function getActualendDate()
     {
-        return $this->actualenddate;
+        return $this->actualEndDate;
     }
 
     /**
