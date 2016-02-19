@@ -43,13 +43,20 @@ class ProjectType extends AbstractType
                 'label' => 'Titel',
                 'attr' => ['autofocus' => true],
                 ])
-            ->add('copiedFrom', EntityType::class, [
+        ;
+
+        // only add project template when in 'add' scenario
+        if ($options['scenario'] == 'add') {
+            $builder->add('copiedFrom', EntityType::class, [
                 'label' => 'Vorgehensmodell',
                 'choice_label' => 'title',
                 'class' => 'AppBundle:Project',
                 'query_builder' => function(EntityRepository $em) {
                     return $em->queryProjectTemplates();
-                }])
+                }]);
+        }
+           
+        $builder 
             ->add('priority', Type\ChoiceType::class, [
                 'choices' => array_flip(self::PRIORITIES),
                 'label' => 'Priorität',
@@ -79,7 +86,8 @@ class ProjectType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Project'
+            'data_class' => 'AppBundle\Entity\Project',
+            'scenario'   => 'add',
         ));
     }
 }
