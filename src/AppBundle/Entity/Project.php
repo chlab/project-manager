@@ -23,7 +23,7 @@ class Project
     /**
      * @const integer
      */
-    const STATE_PENDING = 1;
+    const STATE_ACTIVE = 1;
 
     /**
      * @const integer
@@ -167,8 +167,34 @@ class Project
     public function start()
     {
         $this
-            ->setActualStartdate(new \DateTime())
-            ->setState(self::STATE_PENDING)
+            ->setActualStartDate(new \DateTime())
+            ->setState(self::STATE_ACTIVE)
+        ;
+    }
+
+    /**
+     * Cancel project
+     *     
+     * @return Project
+     */
+    public function cancel()
+    {
+        $this
+            ->setActualEndDate(new \DateTime())
+            ->setState(self::STATE_CANCELLED)
+        ;
+    }
+
+    /**
+     * Complete project
+     *     
+     * @return Project
+     */
+    public function complete()
+    {
+        $this
+            ->setActualEndDate(new \DateTime())
+            ->setState(self::STATE_COMPLETED)
         ;
     }
 
@@ -389,13 +415,13 @@ class Project
     }
 
     /**
-     * Is project pending?
+     * Is project active?
      * 
      * @return boolean
      */
-    public function isPending()
+    public function isActive()
     {
-        return $this->getState() == self::STATE_PENDING;
+        return $this->getState() == self::STATE_ACTIVE;
     }
 
     /**
@@ -490,7 +516,7 @@ class Project
      *
      * @return Project
      */
-    public function setActualStartdate($actualStartDate)
+    public function setActualStartDate($actualStartDate)
     {
         $this->actualStartDate = $actualStartDate;
 
@@ -502,7 +528,7 @@ class Project
      *
      * @return \DateTime
      */
-    public function getActualStartdate()
+    public function getActualStartDate()
     {
         return $this->actualStartDate;
     }
@@ -526,7 +552,7 @@ class Project
      *
      * @return \DateTime
      */
-    public function getActualEnddate()
+    public function getActualEndDate()
     {
         return $this->actualEndDate;
     }

@@ -53,6 +53,11 @@
                             <a href="{{ path('project_start', { 'id': project.id }) }}" class="btn btn-primary">Projekt starten</a>
                         </li>
                         {% endif %}
+                        {% if project.isActive %}
+                        <li>
+                            <a href="{{ path('project_cancel', { 'id': project.id }) }}" class="btn btn-default">Projekt abbrechen</a>
+                        </li>
+                        {% endif %}
                         <li>
                             <a href="{{ path('project_edit', { 'id': project.id }) }}" class="btn btn-default">Bearbeiten</a>
                         </li>

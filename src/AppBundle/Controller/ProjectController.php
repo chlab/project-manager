@@ -123,6 +123,24 @@ class ProjectController extends Controller
     }
 
     /**
+     * Cancels a project
+     *
+     * @Route("/{id}/cancel", name="project_cancel")
+     * @Method({"GET"})
+     */
+    public function cancelAction(Request $request, Project $project)
+    {
+        if ($project->isActive()) {
+            $project->cancel();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($project);
+            $em->flush();
+        }
+        
+        return $this->redirectToRoute('project_show', array('id' => $project->getId()));
+    }
+
+    /**
      * Deletes a Project entity.
      *
      * @Route("/{id}", name="project_delete")
