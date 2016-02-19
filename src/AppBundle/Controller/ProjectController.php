@@ -71,10 +71,10 @@ class ProjectController extends Controller
     {
         $deleteForm = $this->createDeleteForm($project);
 
-        return $this->render('project/show.html.twig', array(
+        return $this->render('project/show.html.twig', [
             'project' => $project,
             'delete_form' => $deleteForm->createView(),
-        ));
+        ]);
     }
 
     /**
@@ -102,6 +102,24 @@ class ProjectController extends Controller
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
+    }
+
+    /**
+     * Starts a project
+     *
+     * @Route("/{id}/start", name="project_start")
+     * @Method({"GET"})
+     */
+    public function startAction(Request $request, Project $project)
+    {
+        if (is_null($project->getActualStartDate())) {
+            $project->start();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($project);
+            $em->flush();
+        }
+        
+        return $this->redirectToRoute('project_show', array('id' => $project->getId()));
     }
 
     /**

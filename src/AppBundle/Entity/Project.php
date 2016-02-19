@@ -16,6 +16,26 @@ use AppBundle\Form\ProjectType;
 class Project
 {
     /**
+     * @const integer
+     */
+    const STATE_NEW = 0;
+
+    /**
+     * @const integer
+     */
+    const STATE_PENDING = 1;
+
+    /**
+     * @const integer
+     */
+    const STATE_COMPLETED = 2;
+
+    /**
+     * @const integer
+     */
+    const STATE_CANCELLED = 3;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -61,13 +81,6 @@ class Project
     private $deleted;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="permissionDate", type="date", nullable=true)
-     */
-    private $permissionDate;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="priority", type="smallint", nullable=true)
@@ -79,7 +92,7 @@ class Project
      *
      * @ORM\Column(name="state", type="smallint", nullable=true)
      */
-    private $state;
+    private $state = 0;
 
     /**
      * @var \DateTime
@@ -144,6 +157,19 @@ class Project
     public function __construct() 
     {
         $this->setCreated(new \DateTime());
+    }
+
+    /**
+     * Start project
+     *     
+     * @return Project
+     */
+    public function start()
+    {
+        $this
+            ->setActualStartdate(new \DateTime())
+            ->setState(self::STATE_PENDING)
+        ;
     }
 
     /**
@@ -288,30 +314,6 @@ class Project
     }
 
     /**
-     * Set permissionDate
-     *
-     * @param \DateTime $permissionDate
-     *
-     * @return Project
-     */
-    public function setPermissiondate($permissionDate)
-    {
-        $this->permissionDate = $permissionDate;
-
-        return $this;
-    }
-
-    /**
-     * Get permissionDate
-     *
-     * @return \DateTime
-     */
-    public function getPermissiondate()
-    {
-        return $this->permissionDate;
-    }
-
-    /**
      * Set priority
      *
      * @param integer $priority
@@ -333,6 +335,23 @@ class Project
     public function getPriority()
     {
         return $this->priority;
+    }
+
+    /**
+     * Get priority as text
+     *
+     * @return string
+     */
+    public function getPriorityText()
+    {
+        $priorities = ProjectType::PRIORITIES;
+        $prio  = $this->getPriority();
+        if (!is_null($prio)) {
+            return $priorities[$prio];
+        }
+        else {
+            return '';
+        }
     }
 
     /**
@@ -360,6 +379,46 @@ class Project
     }
 
     /**
+     * Is project new?
+     * 
+     * @return boolean
+     */
+    public function isNew()
+    {
+        return $this->getState() == self::STATE_NEW;
+    }
+
+    /**
+     * Is project pending?
+     * 
+     * @return boolean
+     */
+    public function isPending()
+    {
+        return $this->getState() == self::STATE_PENDING;
+    }
+
+    /**
+     * Is project completed?
+     * 
+     * @return boolean
+     */
+    public function isCompleted()
+    {
+        return $this->getState() == self::STATE_COMPLETED;
+    }
+
+    /**
+     * Is project cancelled?
+     * 
+     * @return boolean
+     */
+    public function isCancelled()
+    {
+        return $this->getState() == self::STATE_CANCELLED;
+    }
+
+    /**
      * Get state as text
      *
      * @return string
@@ -369,7 +428,7 @@ class Project
         $states = ProjectType::STATES;
         $state  = $this->getState();
         if (!is_null($state)) {
-            return $states[$this->getState()];
+            return $states[$state];
         }
         else {
             return '';

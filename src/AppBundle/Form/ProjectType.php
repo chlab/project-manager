@@ -26,7 +26,7 @@ class ProjectType extends AbstractType
      */
     const STATES = [
         0 => 'neu',
-        1 => 'offen',
+        1 => 'in Bearbeitung',
         2 => 'abgeschlossen',
         3 => 'abgebrochen',
     ];
@@ -38,19 +38,14 @@ class ProjectType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            //->add('isTemplate')
             ->add('title', Type\TextType::class, [
                 'label' => 'Titel',
                 'attr' => ['autofocus' => true],
                 ])
-            // ->add('permissiondate', Type\DateType::class)
             ->add('priority', Type\ChoiceType::class, [
                 'choices' => array_flip(self::PRIORITIES),
                 'label' => 'Priorität',
                 ])
-            /*->add('state', Type\ChoiceType::class, [
-                'choices' => array_flip(self::STATES),
-                ])*/
             ->add('startDate', Type\DateType::class, [
                 'data' => new \DateTime(),
                 'format' => 'dd.MM.yyyy',
@@ -61,8 +56,6 @@ class ProjectType extends AbstractType
                 'format' => 'dd.MM.yyyy',
                 'label' => 'Geplanter Abschluss',
                 ])
-            // ->add('actualstartdate', Type\DateType::class)
-            // ->add('actualenddate', Type\DateType::class)
             ->add('projectManager', EntityType::class, [
                 'label' => 'Zuständig',
                 'choice_label' => 'fullname',
