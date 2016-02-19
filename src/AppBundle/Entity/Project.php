@@ -10,7 +10,7 @@ use AppBundle\Form\ProjectType;
  * Project
  *
  * @ORM\Table(name="Project", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"})}, indexes={@ORM\Index(name="fkProjectManagerEmployee_idx", columns={"projectManager"}), @ORM\Index(name="fkProjectCopiedFrom_idx", columns={"copiedFrom"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\ProjectRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class Project

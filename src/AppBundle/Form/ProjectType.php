@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Doctrine\ORM\EntityRepository;
 
 class ProjectType extends AbstractType
 {
@@ -41,6 +42,14 @@ class ProjectType extends AbstractType
             ->add('title', Type\TextType::class, [
                 'label' => 'Titel',
                 'attr' => ['autofocus' => true],
+                ])
+            ->add('title', EntityType::class, [
+                'label' => 'Vorgehensmodell',
+                'choice_label' => 'title',
+                'class' => 'AppBundle:Project',
+                'query_builder' => function(EntityRepository $em) {
+                    return $em->queryProjectTemplates();
+                }
                 ])
             ->add('priority', Type\ChoiceType::class, [
                 'choices' => array_flip(self::PRIORITIES),
