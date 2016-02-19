@@ -40,6 +40,10 @@
                             <th>Effektiver Abschluss</th>
                             <td>{% if project.actualenddate %}{{ project.actualEndDate|date }}{% endif %}</td>
                         </tr>
+                        <tr>
+                            <th>Vorgehensmodell</th>
+                            <td>{{ project.template }}</td>
+                        </tr>
                     </tbody>
                 </table>
 

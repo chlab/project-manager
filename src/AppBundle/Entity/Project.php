@@ -210,6 +210,17 @@ class Project
     }
 
     /**
+     * Get the name of the template this project was copied from
+     * This is only relevant for the gui
+     * 
+     * @return string
+     */
+    public function getTemplate()
+    {
+        return $this->getCopiedFrom()->getTitle();
+    }
+
+    /**
      * Get id
      *
      * @return integer
