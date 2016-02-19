@@ -11,6 +11,7 @@ use AppBundle\Form\ProjectType;
  *
  * @ORM\Table(name="Project", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"})}, indexes={@ORM\Index(name="fkProjectManagerEmployee_idx", columns={"projectManager"}), @ORM\Index(name="fkProjectCopiedFrom_idx", columns={"copiedFrom"})})
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Project
 {
@@ -28,7 +29,7 @@ class Project
      *
      * @ORM\Column(name="isTemplate", type="boolean", nullable=false)
      */
-    private $isTemplate;
+    private $isTemplate = false;
 
     /**
      * @var string
@@ -137,6 +138,24 @@ class Project
     private $phases;
 
 
+    /**
+     * Setup entity
+     */
+    public function __construct() 
+    {
+        $this->setCreated(new \DateTime());
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     *
+     * @return Project
+     */
+    public function updateModified()
+    {
+        $this->setModified(new \DateTime());
+    }
 
     /**
      * Get id

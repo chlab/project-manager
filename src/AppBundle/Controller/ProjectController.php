@@ -26,9 +26,9 @@ class ProjectController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $projects = $em->getRepository('AppBundle:Project')->findBy([
-            'isTemplate' => 0,
-            ]);
+        $projects = $em->getRepository('AppBundle:Project')->findBy(
+            ['isTemplate' => 0],
+            ['created' => 'DESC']);
 
         return $this->render('project/index.html.twig', array(
             'projects' => $projects,

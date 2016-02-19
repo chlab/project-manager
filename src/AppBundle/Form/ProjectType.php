@@ -15,9 +15,9 @@ class ProjectType extends AbstractType
      * @const array
      */
     const PRIORITIES = [
-        0 => 'low',
+        0 => 'niedrig',
         1 => 'normal',
-        2 => 'high',
+        2 => 'hoch',
     ];
 
     /**
@@ -25,10 +25,10 @@ class ProjectType extends AbstractType
      * @const array
      */
     const STATES = [
-        0 => 'new',
-        1 => 'in progress',
-        2 => 'completed',
-        3 => 'cancelled',
+        0 => 'neu',
+        1 => 'offen',
+        2 => 'abgeschlossen',
+        3 => 'abgebrochen',
     ];
 
     /**
@@ -39,21 +39,27 @@ class ProjectType extends AbstractType
     {
         $builder
             //->add('isTemplate')
-            ->add('title')
+            ->add('title', Type\TextType::class, [
+                'label' => 'Titel',
+                'attr' => ['autofocus' => true],
+                ])
             // ->add('permissiondate', Type\DateType::class)
             ->add('priority', Type\ChoiceType::class, [
                 'choices' => array_flip(self::PRIORITIES),
+                'label' => 'Priorität',
                 ])
             /*->add('state', Type\ChoiceType::class, [
                 'choices' => array_flip(self::STATES),
                 ])*/
             ->add('startDate', Type\DateType::class, [
                 'data' => new \DateTime(),
-                'format' => 'dd.MM.yyyy'
+                'format' => 'dd.MM.yyyy',
+                'label' => 'Geplanter Start',
                 ])
             ->add('endDate', Type\DateType::class,  [
                 'data' => new \DateTime(),
-                'format' => 'dd.MM.yyyy'
+                'format' => 'dd.MM.yyyy',
+                'label' => 'Geplanter Abschluss',
                 ])
             // ->add('actualstartdate', Type\DateType::class)
             // ->add('actualenddate', Type\DateType::class)
@@ -61,6 +67,7 @@ class ProjectType extends AbstractType
                 'label' => 'Zuständig',
                 'choice_label' => 'fullname',
                 'class' => 'AppBundle:Employee',
+                'label' => 'Projektleiter',
                 ])
             //->add('copiedfrom')
         ;

@@ -2,19 +2,21 @@
 
 {% block body %}
     <div class="container">
-        <h1>Project creation</h1>
-
+        <h1>Projekt erstellen</h1>
+        
+        <div class="col-md-6">
         {{ form_start(form) }}
             {{ form_widget(form) }}
             <ul class="list-inline">
                 <li>
-                    <a href="{{ path('project_index') }}" class="btn btn-default">back</a>
+                    <a href="{{ path('project_index') }}" class="btn btn-default">zurück</a>
                 </li>
                 <li>
-                    <input type="submit" class="btn btn-primary" value="Create" />
+                    <input type="submit" class="btn btn-primary" value="Projekt erstellen" />
                 </li>
             </ul>
         {{ form_end(form) }}
+        </div>
     </div>
 
 {% endblock %}
