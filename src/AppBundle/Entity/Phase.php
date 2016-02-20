@@ -85,13 +85,6 @@ class Phase
     private $clearanceDate;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(name="state", type="boolean", nullable=true)
-     */
-    private $state;
-
-    /**
      * @var \AppBundle\Entity\Project
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Project", inversedBy="phases")
@@ -357,30 +350,6 @@ class Phase
     public function getClearanceDate()
     {
         return $this->clearanceDate;
-    }
-
-    /**
-     * Set state
-     *
-     * @param boolean $state
-     *
-     * @return Phase
-     */
-    public function setState($state)
-    {
-        $this->state = $state;
-
-        return $this;
-    }
-
-    /**
-     * Get state
-     *
-     * @return boolean
-     */
-    public function getState()
-    {
-        return $this->state;
     }
 
     /**
