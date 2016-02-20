@@ -14,6 +14,7 @@ Todo - prio 1
 * enable editing of phases
 * ~~add "start" project functionality~~
 * add "complete" project functionality
+* add project and phase approval dates
 * automatically create milestones for the completion of each phase
 * allow referencing of files to project, phase or activities
 * calculate completion-percentage of projects and phases
