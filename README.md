@@ -14,7 +14,10 @@ Todo - prio 1
 * enable editing of phases
 * ~~add "start" project functionality~~
 * add "complete" project functionality
+* define superclasses for project/phase/activity and ressources
+* add planned hours/actual hours to hr entity
 * add project and phase approval dates
+* add changes to ERD
 * automatically create milestones for the completion of each phase
 * allow referencing of files to project, phase or activities
 * calculate completion-percentage of projects and phases
