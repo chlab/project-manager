@@ -40,14 +40,14 @@ class Activity
      *
      * @ORM\Column(name="startDate", type="date", nullable=true)
      */
-    private $startdate;
+    private $startDate;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="endDate", type="date", nullable=true)
      */
-    private $enddate;
+    private $endDate;
 
     /**
      * @var \DateTime
@@ -75,14 +75,14 @@ class Activity
      *
      * @ORM\Column(name="actualStartDate", type="date", nullable=true)
      */
-    private $actualstartdate;
+    private $actualStartDate;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="actualEndDate", type="date", nullable=true)
      */
-    private $actualenddate;
+    private $actualEndDate;
 
     /**
      * @var \AppBundle\Entity\Phase
@@ -178,51 +178,51 @@ class Activity
     }
 
     /**
-     * Set startdate
+     * Set startDate
      *
-     * @param \DateTime $startdate
+     * @param \DateTime $startDate
      *
      * @return Activity
      */
-    public function setStartdate($startdate)
+    public function setStartdate($startDate)
     {
-        $this->startdate = $startdate;
+        $this->startDate = $startDate;
 
         return $this;
     }
 
     /**
-     * Get startdate
+     * Get startDate
      *
      * @return \DateTime
      */
     public function getStartdate()
     {
-        return $this->startdate;
+        return $this->startDate;
     }
 
     /**
-     * Set enddate
+     * Set endDate
      *
-     * @param \DateTime $enddate
+     * @param \DateTime $endDate
      *
      * @return Activity
      */
-    public function setEnddate($enddate)
+    public function setEnddate($endDate)
     {
-        $this->enddate = $enddate;
+        $this->endDate = $endDate;
 
         return $this;
     }
 
     /**
-     * Get enddate
+     * Get endDate
      *
      * @return \DateTime
      */
     public function getEnddate()
     {
-        return $this->enddate;
+        return $this->endDate;
     }
 
     /**
@@ -298,51 +298,51 @@ class Activity
     }
 
     /**
-     * Set actualstartdate
+     * Set actualStartDate
      *
-     * @param \DateTime $actualstartdate
+     * @param \DateTime $actualStartDate
      *
      * @return Activity
      */
-    public function setActualstartdate($actualstartdate)
+    public function setActualStartDate($actualStartDate)
     {
-        $this->actualstartdate = $actualstartdate;
+        $this->actualStartDate = $actualStartDate;
 
         return $this;
     }
 
     /**
-     * Get actualstartdate
+     * Get actualStartDate
      *
      * @return \DateTime
      */
-    public function getActualstartdate()
+    public function getActualStartDate()
     {
-        return $this->actualstartdate;
+        return $this->actualStartDate;
     }
 
     /**
-     * Set actualenddate
+     * Set actualEndDate
      *
-     * @param \DateTime $actualenddate
+     * @param \DateTime $actualEndDate
      *
      * @return Activity
      */
-    public function setActualenddate($actualenddate)
+    public function setActualEndDate($actualEndDate)
     {
-        $this->actualenddate = $actualenddate;
+        $this->actualEndDate = $actualEndDate;
 
         return $this;
     }
 
     /**
-     * Get actualenddate
+     * Get actualEndDate
      *
      * @return \DateTime
      */
-    public function getActualenddate()
+    public function getActualEndDate()
     {
-        return $this->actualenddate;
+        return $this->actualEndDate;
     }
 
     /**
