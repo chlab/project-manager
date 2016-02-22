@@ -33,6 +33,15 @@
                 </div>
                 <div class="col-md-8">
                     {% include 'activity/show_in_phase.html.twig' %}
+                    {% include 'milestone/show_in_phase.html.twig' %}
+                    <ul class="list-inline">
+                        <li>
+                            <a class="btn btn-default btn-sm" href="{{ path('activity_new', { 'phase_id': phase.id, 'project_id': project.id }) }}">Aktivität hinzufügen</a>
+                        </li>
+                        <li>
+                            <a class="btn btn-default btn-sm" href="{{ path('milestone_new', { 'phase_id': phase.id, 'project_id': project.id }) }}">Meilenstein definieren</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
     </div>
