@@ -16,7 +16,6 @@ class ActivityType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            //->add('ismilestone')
             ->add('name')
             ->add('startdate', Type\DateType::class, [
                 'data' => new \DateTime(),
@@ -26,14 +25,6 @@ class ActivityType extends AbstractType
                 'data' => new \DateTime(),
                 'format' => 'dd.MM.yyyy'
                 ])
-            /*->add('actualstartdate', Type\DateType::class, [
-                'data' => new \DateTime(),
-                'format' => 'dd.MM.yyyy'
-                ])
-            ->add('actualenddate', Type\DateType::class, [
-                'data' => new \DateTime(),
-                'format' => 'dd.MM.yyyy'
-                ])*/
             ->add('responsibleuser')
         ;
 
@@ -58,7 +49,6 @@ class ActivityType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'AppBundle\Entity\Activity',
-            // @todo we probably don't need these anymore
             'phaseId' => null,
             'projectId' => null,
         ));
