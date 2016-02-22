@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1>{{ activity.name }} bearbeiten</h1>
+
+        {{ form_start(edit_form) }}
+            {{ form_widget(edit_form) }}
+            <ul class="list-inline">
+                <li>
+                    <a class="btn btn-default" href="{{ path('activity_show', { 'id': activity.id, 'project_id': project_id }) }}">
+                        Zurück
+                    </a>
+                </li>
+                <li><input class="btn btn-primary" type="submit" value="Save" /></li>
+            </ul>
+        {{ form_end(edit_form) }}
+    </div>
+{% endblock %}

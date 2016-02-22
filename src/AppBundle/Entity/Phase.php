@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Criteria;
 
 /**
  * Phase
@@ -407,6 +408,20 @@ class Phase
      */
     public function getActivities()
     {
-        return $this->activities;
+        $criteria = Criteria::create();
+        $criteria->where(Criteria::expr()->isNull('isMilestone'));
+        return $this->activities->matching($criteria);
+    }
+
+    /**
+     * Get milestones
+     *
+     * @return array
+     */
+    public function getMilestones()
+    {
+        $criteria = Criteria::create();
+        $criteria->where(Criteria::expr()->eq('isMilestone', '1'));
+        return $this->activities->matching($criteria);
     }
 }

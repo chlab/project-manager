@@ -1,0 +1,18 @@
+<table class="table table-striped table-hover table-condensed">
+    <thead>
+        <tr>
+            <th>Meilenstein</th>
+            <th>Datum</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for milestone in phase.milestones %}
+            <tr>
+                <td>
+                    <a href="{{ path('milestone_show', { 'id': milestone.id, 'project_id': project.id }) }}">{{ milestone.name }}</a>
+                </td>
+                <td>{% if milestone.startDate %}{{ milestone.startDate|date }}{% endif %}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

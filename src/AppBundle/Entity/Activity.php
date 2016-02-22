@@ -19,70 +19,49 @@ class Activity
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="isMilestone", type="boolean", nullable=true)
      */
-    private $isMilestone;
+    protected $isMilestone = false;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="startDate", type="date", nullable=true)
      */
-    private $startDate;
+    protected $startDate;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="endDate", type="date", nullable=true)
      */
-    private $endDate;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="created", type="datetime", nullable=true)
-     */
-    private $created;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="modified", type="datetime", nullable=true)
-     */
-    private $modified;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="deleted", type="datetime", nullable=true)
-     */
-    private $deleted;
+    protected $endDate;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="actualStartDate", type="date", nullable=true)
      */
-    private $actualStartDate;
+    protected $actualStartDate;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="actualEndDate", type="date", nullable=true)
      */
-    private $actualEndDate;
+    protected $actualEndDate;
 
     /**
      * @var \AppBundle\Entity\Phase
@@ -92,7 +71,7 @@ class Activity
      *   @ORM\JoinColumn(name="phaseId", referencedColumnName="id")
      * })
      */
-    private $phase;
+    protected $phase;
 
     /**
      * @var \AppBundle\Entity\Employee
@@ -102,21 +81,21 @@ class Activity
      *   @ORM\JoinColumn(name="responsibleUser", referencedColumnName="id")
      * })
      */
-    private $responsibleUser;
+    protected $responsibleUser;
 
     /**
      * @var array
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Humanresource", mappedBy="activity")
      */
-    private $humanResources;
+    protected $humanResources;
 
     /**
      * @var array
      *
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Financialresource", mappedBy="activity")
      */
-    private $financialResources;
+    protected $financialResources;
     
 
     /**
@@ -136,7 +115,7 @@ class Activity
      *
      * @return Activity
      */
-    public function setIsmilestone($isMilestone)
+    public function setIsMilestone($isMilestone)
     {
         $this->isMilestone = $isMilestone;
 
@@ -148,7 +127,7 @@ class Activity
      *
      * @return boolean
      */
-    public function getIsmilestone()
+    public function getIsMilestone()
     {
         return $this->isMilestone;
     }
@@ -223,78 +202,6 @@ class Activity
     public function getEnddate()
     {
         return $this->endDate;
-    }
-
-    /**
-     * Set created
-     *
-     * @param \DateTime $created
-     *
-     * @return Activity
-     */
-    public function setCreated($created)
-    {
-        $this->created = $created;
-
-        return $this;
-    }
-
-    /**
-     * Get created
-     *
-     * @return \DateTime
-     */
-    public function getCreated()
-    {
-        return $this->created;
-    }
-
-    /**
-     * Set modified
-     *
-     * @param \DateTime $modified
-     *
-     * @return Activity
-     */
-    public function setModified($modified)
-    {
-        $this->modified = $modified;
-
-        return $this;
-    }
-
-    /**
-     * Get modified
-     *
-     * @return \DateTime
-     */
-    public function getModified()
-    {
-        return $this->modified;
-    }
-
-    /**
-     * Set deleted
-     *
-     * @param \DateTime $deleted
-     *
-     * @return Activity
-     */
-    public function setDeleted($deleted)
-    {
-        $this->deleted = $deleted;
-
-        return $this;
-    }
-
-    /**
-     * Get deleted
-     *
-     * @return \DateTime
-     */
-    public function getDeleted()
-    {
-        return $this->deleted;
     }
 
     /**
