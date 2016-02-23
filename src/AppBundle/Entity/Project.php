@@ -625,4 +625,49 @@ class Project
     {
         return $this->phases;
     }
+
+    /**
+     * Get remaining days in project
+     *
+     * @return array
+     */
+    public function getRemainingDays()
+    {
+        if ($this->isCancelled() || $this->isCompleted()) {
+            return 0;
+        }
+        $today = new \DateTime();
+        $diff = $this->getEnddate()->diff($today);
+        return $diff->format('%d');
+    }
+
+    /**
+     * Get number of activities in all phases
+     *
+     * @return array
+     */
+    public function getNrOfActivites()
+    {
+        $nr = 0;
+        foreach ($this->getPhases() as $phase) {
+            $nr += $phase->getActivities()->count();
+        }
+        return $nr;
+    }
+
+    /**
+     * Get percentage of completion
+     *
+     * @return array
+     */
+    public function getCompletionPercentage()
+    {
+        if ($this->isCancelled() || $this->isCompleted()) {
+            return 100;
+        }
+        $remainingDays = $this->getRemainingDays();
+        $diff = $this->getEndDate()->diff($this->getStartDate());
+        $totalDays = $diff->format('%d');
+        return 100/$totalDays*$remainingDays;
+    }
 }
